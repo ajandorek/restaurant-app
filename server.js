@@ -30,7 +30,7 @@ app.get("/", function(req, res) {
   // res.send("Welcome to the home page!")
   res.sendFile(path.join(__dirname, "view.html"));
 });
-
+//new comment
 app.post("/api/wait", function(req, res) {
 
 	var newWait = req.body;
