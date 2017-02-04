@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" 
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="http://bootswatch.com/darkly/bootstrap.min.css" rel="stylesheet" />
+        <link href="style.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h1>Hot Reservations</h1>
+                <hr />
+                <h2>Current Reservations and Waiting List</h2>
+                <div class="buttons">
+                    <a href="reserve.html" id="tables" class="btn btn-primary">Reserve a Table</a>
+                    <a href="home.html" id="home" class="btn btn-warning">Go Home</a>
+                </div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Current Tables</h3>
+                </div>
+                <div id="currentTables"></div>
+            </div>
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Waiting List</h3>
+                </div>
+                <div id="Waiting List"></div>
+            </div>
+            <p><a href="#">Clear Table Data</a> | <a href="#">API Table Link</a> | <a href="#">API Wait List</a></p>
+        </div>
+    </body>
+</html>
