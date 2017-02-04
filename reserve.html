@@ -4,6 +4,10 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="http://bootswatch.com/darkly/bootstrap.min.css" rel="stylesheet" />
         <link href="style.css" rel="stylesheet" />
+        <script
+        src="https://code.jquery.com/jquery-3.1.1.js"
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="container">
@@ -29,10 +33,49 @@
                         <input id="input-email"><br />
                         <label>Unique ID</label><br />
                         <input id="input-id"><br />
-                        <a href="#" id="submit" class="btn btn-primary">Submit</a>
+                        <a id="submit-btn" class="btn btn-primary">Submit</a>
                     </div>
                 </div>
             <p><a href="#">API Table Link</a> | <a href="#">API Wait List</a></p>
         </div>
+        <script type="text/javascript">
+            var tablesAvailable = 6;
+            var table = [];
+            $.get("/api/table").done(function(data){
+                table.push(data);
+            });
+
+            $("#submit-btn").on("click", function(event){
+                event.preventDefault();
+                if ((tablesAvailable - table[0].length) > 0) {
+                    console.log(table.length);
+                    var newTable = {
+                        customerName: $("#input-name").val().trim(),
+                        phoneNumber: $("#input-phone").val().trim(),
+                        customerEmail: $("#input-email").val().trim(),
+                        customerID: $("#input-id").val().trim()
+                    };
+
+                    $.post("/api/table", newTable)
+                    .done(function(data){
+                        console.log(data);
+                        alert("Table Reserved!");
+                    });
+                } else {
+                    var newWait = {
+                        customerName: $("#input-name").val().trim(),
+                        phoneNumber: $("#input-phone").val().trim(),
+                        customerEmail: $("#input-email").val().trim(),
+                        customerID: $("#input-id").val().trim()
+                    };
+
+                    $.post("/api/wait", newWait)
+                    .done(function(data){
+                        console.log(data);
+                        alert("No tables available. Added to waitlist");
+                    });
+                }   
+            });
+        </script>
     </body>
 </html>

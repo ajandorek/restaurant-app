@@ -41,12 +41,20 @@ var table = [{
 	{
 		tableName: "table 5"
 	}
-	
-}];
+	];
 
 app.get("/", function(req, res) {
   // res.send("Welcome to the home page!")
   res.sendFile(path.join(__dirname, "home.html"));
+});
+
+app.get("/reserve.html", function(req, res) {
+  // res.send("Welcome to the home page!")
+  res.sendFile(path.join(__dirname, "reserve.html"));
+});
+app.get("/tables.html", function(req, res) {
+  // res.send("Welcome to the home page!")
+  res.sendFile(path.join(__dirname, "tables.html"));
 });
 app.get("/api/wait", function(req, res){
 	var waitList = req.wait;
@@ -66,7 +74,19 @@ app.post("/api/wait", function(req, res) {
 
 	res.json(newWait);
 
-	});
+});
+
+app.post("/api/table", function(req, res) {
+
+	var newTable = req.body;
+
+	console.log(newTable);
+
+	table.push(newTable);
+
+	res.json(newTable);
+
+});
 
 
 
