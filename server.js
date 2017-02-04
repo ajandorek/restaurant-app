@@ -26,22 +26,7 @@ var wait = [{
 	}
 	];
 
-var table = [{
-		tableName: "Table 1"
-	},
-	{
-		tableName: "table 2"
-	},
-	{
-		tableName: "table 3"
-	},
-	{
-		tableName: "table 4"
-	},
-	{
-		tableName: "table 5"
-	}
-	];
+var table = [{}];
 
 app.get("/", function(req, res) {
   // res.send("Welcome to the home page!")

@@ -4,6 +4,10 @@
         integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link href="http://bootswatch.com/darkly/bootstrap.min.css" rel="stylesheet" />
         <link href="style.css" rel="stylesheet" />
+        <script
+        src="https://code.jquery.com/jquery-3.1.1.js"
+        integrity="sha256-16cdPddA6VdVInumRGo6IbivbERE8p7CQR3HzTBuELA="
+        crossorigin="anonymous"></script>
     </head>
     <body>
         <div class="container">
@@ -26,9 +30,24 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">Waiting List</h3>
                 </div>
-                <div id="Waiting List"></div>
+                <div id="waitingList"></div>
             </div>
             <p><a href="#">Clear Table Data</a> | <a href="#">API Table Link</a> | <a href="#">API Wait List</a></p>
         </div>
+        <script type="text/javascript">
+        $(document).ready(function(){
+                var table = [];
+                $.get("/api/table").done(function(data){
+                    table.push(data);
+                    console.log(table)
+                console.log(table[0]);
+                for (var i = 0; i < table[0].length; i++){
+                    console.log('hello')
+                    $("#currentTables").append("<p><span class='label label-default'>" + (i + 1) + "</span> | ");
+
+                }
+                });
+            });
+        </script>
     </body>
 </html>
