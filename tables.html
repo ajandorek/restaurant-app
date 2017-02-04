@@ -39,12 +39,15 @@
                 var table = [];
                 $.get("/api/table").done(function(data){
                     table.push(data);
-                    console.log(table)
-                console.log(table[0]);
-                for (var i = 0; i < table[0].length; i++){
-                    console.log('hello')
-                    $("#currentTables").append("<p><span class='label label-default'>" + (i + 1) + "</span> | ");
-
+                for (var i = 1; i < table[0].length; i++){
+                    $("#currentTables").append("<p><span class='label label-default'>" + i + "</span> | " + table[0][i].customerID + "</p>");
+                }
+                });
+                var wait = [];
+                $.get("/api/wait").done(function(data){
+                    wait.push(data);
+                for (var i = 0; i < wait[0].length; i++){
+                    $("#waitingList").append("<p><span class='label label-default'>" + (i + 1) + "</span> | " + wait[0][i].customerID + "</p>");
                 }
                 });
             });
