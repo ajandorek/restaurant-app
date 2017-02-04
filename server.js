@@ -26,9 +26,34 @@ var wait = [{
 	}
 	];
 
+var table = [{
+		tableName: "Table 1"
+	},
+	{
+		tableName: "table 2"
+	},
+	{
+		tableName: "table 3"
+	},
+	{
+		tableName: "table 4"
+	},
+	{
+		tableName: "table 5"
+	}
+	
+}];
+
 app.get("/", function(req, res) {
   // res.send("Welcome to the home page!")
-  res.sendFile(path.join(__dirname, "view.html"));
+  res.sendFile(path.join(__dirname, "home.html"));
+});
+app.get("/api/wait", function(req, res){
+	var waitList = req.wait;
+	res.json(wait);
+});
+app.get("/api/table", function(req, res) {
+	res.json(table);
 });
 //new comment
 app.post("/api/wait", function(req, res) {
@@ -43,7 +68,7 @@ app.post("/api/wait", function(req, res) {
 
 	});
 
-	
+
 
 app.listen(PORT, function() {
   console.log("App listening on PORT " + PORT);
